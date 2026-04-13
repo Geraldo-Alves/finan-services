@@ -73,4 +73,20 @@ public class ValorService {
         return true;
     }
 
+    public List<Valor> listarEntradas(Integer mes, Integer ano) {
+        if (mes == null || ano == null) {
+            mes = java.time.LocalDate.now().getMonthValue();
+            ano = java.time.LocalDate.now().getYear();
+        }
+        return valorRepository.findByMesAndAnoAndTipo(mes, ano, "E");
+    }
+
+    public List<Valor> listarSaidas(Integer mes, Integer ano) {
+        if (mes == null || ano == null) {
+            mes = java.time.LocalDate.now().getMonthValue();
+            ano = java.time.LocalDate.now().getYear();
+        }
+        return valorRepository.findByMesAndAnoAndTipo(mes, ano, "S");
+    }
+
 }

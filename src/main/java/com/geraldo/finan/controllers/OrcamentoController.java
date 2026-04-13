@@ -18,8 +18,8 @@ public class OrcamentoController extends BaseController {
     private OrcamentoService orcamentoService;
 
     @GetMapping("")
-    public Response obterOrcamento(@RequestParam Integer mes, @RequestParam Integer ano) {
-        System.out.println("Ola");
+    public Response obterOrcamento(@RequestParam(required = false) Integer mes,
+                                 @RequestParam(required = false) Integer ano) {
         OrcamentoDTO orcamento = orcamentoService.obterOrcamento(mes, ano);
         return success(orcamento);
     }

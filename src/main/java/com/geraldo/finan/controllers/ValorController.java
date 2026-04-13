@@ -8,6 +8,7 @@ import com.geraldo.finan.services.ValorService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,18 @@ public class ValorController extends BaseController {
     @GetMapping
     public Response listar() {
         return success(repository.findAll());
+    }
+
+    @GetMapping("/entradas")
+    public Response listarEntradas(@RequestParam(required = false) Integer mes,
+                                   @RequestParam(required = false) Integer ano) {
+        return success(valorService.listarEntradas(mes, ano));
+    }
+
+    @GetMapping("/saidas")
+    public Response listarSaidas(@RequestParam(required = false) Integer mes,
+                                 @RequestParam(required = false) Integer ano) {
+        return success(valorService.listarSaidas(mes, ano));
     }
 
     @GetMapping("/{id}")

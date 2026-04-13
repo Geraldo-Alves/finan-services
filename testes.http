@@ -1,0 +1,23 @@
+@BASE_URL = http://localhost:8000/api
+
+###
+GET {{BASE_URL}}/categorias
+
+###
+GET {{BASE_URL}}/valores
+
+###
+POST {{BASE_URL}}/valores
+Content-Type: application/json
+
+{
+    "nome": "Aluguel Casa",
+    "descricao": "Aluguel da Casa do Jardim Oriente",
+    "categoria": 5,
+    "valor": 7308.68,
+    "mes": 4,
+    "ano": 2026
+}
+
+###
+GET {{BASE_URL}}/orcamento?mes=4&ano=2026
